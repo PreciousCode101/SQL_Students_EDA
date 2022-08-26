@@ -1,5 +1,4 @@
-
-            -- View all the columns and rows in the table
+-- View all the columns and rows in the table
 SELECT
     *
 FROM
@@ -40,7 +39,7 @@ SELECT
     Calculus1,
     Calculus2,
     Statistics,
-    Probability, CASE WHEN ID IS NOT NULL THEN ID WHEN CLASS IS NOT NULL THEN class WHEN GENDER IS NOT NULL THEN gender WHEN RACE IS NOT NULL THEN race WHEN GPA IS NOT NULL THEN GPA WHEN ALGEBRA IS NOT NULL THEN Algebra WHEN CALCULUS1 IS NOT NULL THEN CALCULUS1 WHEN CALCULUS2 IS NOT NULL THEN Calculus2 WHEN STATISTICS IS NOT NULL THEN Statistics WHEN PROBABILITY IS NOT NULL THEN PROBABILITY ELSE &#039;N/A&#039;
+    Probability CASE WHEN ID IS NOT NULL THEN ID WHEN CLASS IS NOT NULL THEN class WHEN GENDER IS NOT NULL THEN gender WHEN RACE IS NOT NULL THEN race WHEN GPA IS NOT NULL THEN GPA WHEN ALGEBRA IS NOT NULL THEN Algebra WHEN CALCULUS1 IS NOT NULL THEN CALCULUS1 WHEN CALCULUS2 IS NOT NULL THEN Calculus2 WHEN STATISTICS IS NOT NULL THEN Statistics WHEN PROBABILITY IS NOT NULL THEN PROBABILITY ELSE 'N/A'
 END AS cleaned_table
 FROM
     studentseda
@@ -49,7 +48,7 @@ DELIMITER
     -- Convert gender column content to proper letters
 SELECT
     gender,
-    CASE WHEN gender = male THEN Male WHEN gender = female THEN Female ELSE N/A
+    CASE WHEN gender = 'male' THEN 'Male' WHEN gender = 'female' THEN 'Female' ELSE 'N/A'
 END AS Changed_case
 FROM
     studentseda
@@ -257,26 +256,41 @@ WHERE
     FROM
         studentseda
 )
-Delimiter //
--- What is the average score of students in Algebra?
-select avg(Algebra)
-from studentseda
-Delimiter //
--- What is the average score of students in Calculus1?
-select avg(Calculus1)
-from studentseda
-Delimiter //
--- What is the average score of students in Calculus2?
-select avg(Calculus2)
-from studentseda
-Delimiter //
--- What is the average score of students in Statistics?
-select avg(Statistics)
-from studentseda
-Delimiter //
--- What is the average score of students in Probability?
-select avg(Probability)
-from studentseda
+Delimiter
+    //
+    -- What is the average score of students in Algebra?
+SELECT
+    AVG(Algebra)
+FROM
+    studentseda
+Delimiter
+    //
+    -- What is the average score of students in Calculus1?
+SELECT
+    AVG(Calculus1)
+FROM
+    studentseda
+Delimiter
+    //
+    -- What is the average score of students in Calculus2?
+SELECT
+    AVG(Calculus2)
+FROM
+    studentseda
+Delimiter
+    //
+    -- What is the average score of students in Statistics?
+SELECT
+    AVG(Statistics)
+FROM
+    studentseda
+Delimiter
+    //
+    -- What is the average score of students in Probability?
+SELECT
+    AVG(Probability)
+FROM
+    studentseda
 Delimiter
     //
     -- Who has the highest GPA?
@@ -294,8 +308,9 @@ WHERE
     FROM
         studentseda
 )
-DELIMITER //
--- Who has thelowest GPA?
+DELIMITER
+    //
+    -- Who has thelowest GPA?
 SELECT
     ID,
     class,
